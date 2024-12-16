@@ -34,11 +34,14 @@ function startApp(name){
  * @returns {void}
  */
 function onDataReceived(text) {
-  if (text === 'quit\n' || text === 'exit\n') {
+  if (text === 'quit\r\n' || text === 'exit\r\n') {
     quit();
   }
-  else if(text === 'hello\n'){
+  else if(text === 'hello\r\n'){
     hello();
+  }
+  else if(text === 'help\r\n'){
+    help();
   }
   else{
     unknownCommand(text);
@@ -77,6 +80,17 @@ function quit(){
   console.log('Quitting now, goodbye!')
   process.exit();
 }
+
+
+/**
+ * Lists all the possible commands
+ *
+ * @returns {void}
+ */
+function help(){
+  console.log('All possible commands:\n\'hello\':Says hello.\n\'quit\' or \'exit\':Exits the application.\n\'help\':Lists all the possible commands.')
+}
+
 
 // The following line starts the application
 startApp("Elina Karout")
