@@ -37,8 +37,9 @@ function onDataReceived(text) {
   if (text === 'quit\r\n' || text === 'exit\r\n') {
     quit();
   }
-  else if(text === 'hello\r\n'){
-    hello();
+  else if(text.startsWith("hello")){
+    text = text.replace("hello"," ");
+    hello(text);
   }
   else if(text === 'help\r\n'){
     help();
@@ -66,8 +67,8 @@ function unknownCommand(c){
  *
  * @returns {void}
  */
-function hello(){
-  console.log('hello!')
+function hello(h){
+  console.log('hello '+h.trim()+"!")
 }
 
 
