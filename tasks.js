@@ -101,7 +101,7 @@ function quit(){
  * @returns {void}
  */
 function help(){
-  console.log('All possible commands:\n\'hello\':Says hello.\n\'quit\' or \'exit\':Exits the application.\n\'help\':Lists all the possible commands.')
+  console.log('All possible commands:\n\'hello\':Says hello!\n\'hello\' + any argument: Says hello argument!\n\'quit\' or \'exit\':Exits the application.\n\'help\':Lists all the possible commands.')
 }
 
 
