@@ -51,6 +51,9 @@ function onDataReceived(text) {
   else if(command === 'help'){
     help();
   }
+  else if(command === 'list'){
+    list();
+  }
   else{
     unknownCommand(text);
   }
@@ -104,6 +107,18 @@ function help(){
   console.log('All possible commands:\n\'hello\':Says hello!\n\'hello\' + any argument: Says hello argument!\n\'quit\' or \'exit\':Exits the application.\n\'help\':Lists all the possible commands.')
 }
 
+
+/**
+ * lists all tasks 
+ *
+ *
+ * @returns {void}
+ */
+function list(){
+  const task =["Wake up", "Eat breakfast"]
+  console.log("1. "+task[0]);
+  console.log("2. "+task[1]);
+}
 
 // The following line starts the application
 startApp("Elina Karout")
