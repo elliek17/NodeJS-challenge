@@ -54,6 +54,15 @@ function onDataReceived(text) {
   else if(command === 'list'){
     list();
   }
+  else if(command == 'add'){
+    if (input.length > 1){
+      var arg = input[1].trim();
+      add(arg);
+    }
+    else{
+      console.log("Error! Nothing to add.")
+    }
+  }
   else{
     unknownCommand(text);
   }
@@ -115,10 +124,25 @@ function help(){
  * @returns {void}
  */
 function list(){
-  const task =["Wake up", "Eat breakfast"]
-  console.log("1. "+task[0]);
-  console.log("2. "+task[1]);
+  console.log("List of all tasks:   ")
+  for(let i=0; i<task.length;i++){
+    console.log(i+1+". "+task[i])
+  }
 }
 
+
+/**
+ * adds tasks 
+ *
+ *
+ * @returns {void}
+ */
+function add(a){
+  task.push(a);
+  return task;  
+}
+
+
 // The following line starts the application
-startApp("Elina Karout")
+startApp("Elina Karout");
+const task =["Wake up"];
