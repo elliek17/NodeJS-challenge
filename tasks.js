@@ -63,6 +63,14 @@ function onDataReceived(text) {
       console.log("Error! Nothing to add.")
     }
   }
+  else if(command == 'remove'){
+    if(input.length>1){
+      remove(input[1]);
+    }
+    else{
+      remove(task.length)
+    }
+  }
   else{
     unknownCommand(text);
   }
@@ -139,6 +147,17 @@ function list(){
  */
 function add(a){
   task.push(a);
+  return task;  
+}
+
+/**
+ * removes tasks 
+ *
+ *
+ * @returns {void}
+ */
+function remove(r){
+  task.splice(r-1,1);
   return task;  
 }
 
