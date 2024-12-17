@@ -63,12 +63,7 @@ function onDataReceived(text) {
     }
   }
   else if(command == 'remove'){
-    if(input.length>1){
-      remove(input[1]);
-    }
-    else{
-      remove(task.length)
-    }
+    remove(arg)
   }
   else{
     unknownCommand(text);
@@ -156,7 +151,15 @@ function add(a){
  * @returns {void}
  */
 function remove(r){
-  task.splice(r-1,1);
+  if(r>task.length){
+    console.log('Task number '+r+' does not exist')
+  }
+  else if(r === ''){
+    task.splice(task.length-1,1)
+  }
+  else{
+    task.splice(r-1,1);
+  }
   return task;  
 }
 
