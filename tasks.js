@@ -65,6 +65,9 @@ function onDataReceived(text) {
   else if(command == 'remove'){
     remove(arg)
   }
+  else if(command == 'edit'){
+    edit(arg);
+  }
   else{
     unknownCommand(text);
   }
@@ -137,7 +140,7 @@ function list(){
  * adds tasks 
  *
  *
- * @returns {void}
+ * @returns {task}
  */
 function add(a){
   task.push(a);
@@ -148,7 +151,7 @@ function add(a){
  * removes tasks 
  *
  *
- * @returns {void}
+ * @returns {task}
  */
 function remove(r){
   if(r>task.length){
@@ -161,6 +164,40 @@ function remove(r){
     task.splice(r-1,1);
   }
   return task;  
+}
+
+
+/**
+ * edits tasks 
+ *
+ *
+ * @returns {task}
+ */
+function edit(e){
+  if (e === ''){
+    console.log('No edit given')
+  } 
+  else{
+    const argArray = e.split(' ');
+    let number = argArray[0].trim();
+    if(isNaN(number)){
+      task.splice(task.length-1, 1, e);
+    }
+    else{
+      if(number>task.length){
+        console.log('Task number '+number+' does not exist')
+      }
+      else{
+        let editArg = e.replace(argArray[0],'').trim();
+        if (editArg === ''){
+          console.log('No edit given')
+        }
+        else{
+          task.splice(number-1, 1, editArg);
+        }
+      }
+    }
+  }
 }
 
 
