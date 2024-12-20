@@ -124,54 +124,63 @@ function help(){
 
 /**
  * lists all tasks 
- *
+ * 
  *
  * @returns {void}
  */
 function list(){
   console.log("List of all tasks:   ")
-  for(let i=0; i<task.length;i++){
-    console.log(i+1+". "+task[i])
+  for(let i=0; i<data.tasks.length;i++){
+    if (data.tasks[i].done){
+      console.log(i+1+". [✓] "+data.tasks[i].text)
+    }
+    else {
+      console.log(i+1+". [ ] "+data.tasks[i].text)
+    }
   }
 }
 
 
 /**
  * adds tasks 
+ * 
  *
- *
- * @returns {task}
+ * @returns {data}
  */
 function add(a){
-  task.push(a);
-  return task;  
+  var newTask = {
+    "text": a,
+    "done": false
+    }
+  data.tasks.push(newTask);
+  return data;  
 }
 
 /**
  * removes tasks 
+ * 
  *
- *
- * @returns {task}
+ * @returns {data}
  */
 function remove(r){
-  if(r>task.length){
+  if(r>data.tasks.length){
     console.log('Task number '+r+' does not exist')
   }
   else if(r === ''){
-    task.splice(task.length-1,1)
+    data.tasks.splice(data.tasks.length-1,1)
   }
   else{
-    task.splice(r-1,1);
+    data.tasks.splice(r-1,1);
   }
-  return task;  
+  return data;  
 }
 
 
 /**
  * edits tasks 
+ * 
  *
- *
- * @returns {task}
+ * @returns {data}
  */
 function edit(e){
   if (e === ''){
@@ -181,10 +190,10 @@ function edit(e){
     const argArray = e.split(' ');
     let number = argArray[0].trim();
     if(isNaN(number)){
-      task.splice(task.length-1, 1, e);
+      data.tasks[data.tasks.length-1].text = e;
     }
     else{
-      if(number>task.length){
+      if(number>data.tasks.length){
         console.log('Task number '+number+' does not exist')
       }
       else{
@@ -193,14 +202,15 @@ function edit(e){
           console.log('No edit given')
         }
         else{
-          task.splice(number-1, 1, editArg);
+          data.tasks[number-1].text = editArg;
         }
       }
     }
   }
+  return data
 }
 
 
 // The following line starts the application
 startApp("Elina Karout");
-const task =["Wake up"];
+const data = require('./test.json');
