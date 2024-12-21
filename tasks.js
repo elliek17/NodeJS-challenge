@@ -68,6 +68,12 @@ function onDataReceived(text) {
   else if(command == 'edit'){
     edit(arg);
   }
+  else if(command === 'check'){
+    check(arg);
+  }
+  else if(command === 'uncheck'){
+    uncheck(arg);
+  }
   else{
     unknownCommand(text);
   }
@@ -210,6 +216,49 @@ function edit(e){
   return data
 }
 
+
+/**
+ * checks tasks that are done 
+ * 
+ *
+ * @returns {data}
+ */
+function check(ch){
+  if(isNaN(ch) || ch === ''){
+    console.log('Number of task not provided')
+  }
+  else{
+    if (ch>data.tasks.length || ch<=0){
+      console.log('Task number '+ch+' does not exist')
+    }
+    else{
+      data.tasks[ch-1].done = true
+    }
+  } 
+  return data 
+}
+
+
+/**
+ * unchecks tasks that are not done 
+ * 
+ *
+ * @returns {data}
+ */
+function uncheck(u){
+  if(isNaN(u) || u === ''){
+    console.log('Number of task not provided')
+  }
+  else{
+    if (u>data.tasks.length || u<=0){
+      console.log('Task number '+u+' does not exist')
+    }
+    else{
+      data.tasks[u-1].done = false
+    }
+  } 
+  return data 
+}
 
 // The following line starts the application
 startApp("Elina Karout");
