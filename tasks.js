@@ -124,7 +124,7 @@ function quit(){
  * @returns {void}
  */
 function help(){
-  console.log('All possible commands:\n\'hello\':Says hello!\n\'hello argument\': Says hello argument!\n\'help\':Lists all the possible commands.\n\'add x\': adds tasks\n\'list\': lists all tasks\n\'remove\': removes last added task\n\'remove n\': removes nth task\n\'quit\' or \'exit\':Exits the application.')
+  console.log('All possible commands:\n\'hello\':Says hello!\n\'hello x\': Says hello x!\n\'help\':Lists all the possible commands.\n\'add x\': adds tasks\n\'list\': lists all tasks\n\'remove\': removes last added task\n\'remove n\': removes nth task\n\'check n\': adds a check before the done task number n\n\'uncheck n\': removes a check before the undone task number n\n\'quit\' or \'exit\':Exits the application.')
 }
 
 
